@@ -41,17 +41,17 @@ struct node *merge2LinkedLists(struct node *head, struct node *temp)
 			temp = temp->next;
 			flag = 1;
 		}
-		else if (flag == 0)
-		{
-			prev = m;
-			m = m->next;
-		}
 		else if (flag && m->num < temp->num)
 		{
 			prev->next = m;
 			prev = m;
 			m = m->next;
 			flag = 0;
+		}
+		else if (flag == 0)
+		{
+			prev = m;
+			m = m->next;
 		}
 		else if (flag)
 		{
@@ -64,8 +64,7 @@ struct node *merge2LinkedLists(struct node *head, struct node *temp)
 	{
 		prev->next = m;
 	}
-	else
+	else if (temp)
 		prev->next = temp;
-
 	return head;
 }
